@@ -13,7 +13,7 @@ window.PORTFOLIO_DATA = {
     tagline: "Building intelligent, reproducible systems from data.",
     location: "Kigali, Rwanda / L'Aquila, Italy",
     email: "jeanaime.iraguha@aims.ac.rw",
-    photo: "assets/images/profile-placeholder.svg",
+    photo: "assets/images/profile.jpg",
     availability: "Open to Data Scientist & AI Engineer roles",
     links: {
       linkedin: "https://www.linkedin.com/in/jean-aime-iraguha-08584a33a",
