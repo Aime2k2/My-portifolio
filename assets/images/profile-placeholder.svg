@@ -1,0 +1,11 @@
+<svg width="900" height="980" viewBox="0 0 900 980" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="980" rx="52" fill="#07111F"/>
+  <circle cx="726" cy="146" r="190" fill="#14B8A6" opacity="0.2"/>
+  <circle cx="144" cy="834" r="220" fill="#38BDF8" opacity="0.16"/>
+  <path d="M0 703C160 606 295 602 413 689C560 797 711 776 900 654V980H0V703Z" fill="#0D1B2E"/>
+  <circle cx="450" cy="348" r="151" fill="#F8FAFC" opacity="0.96"/>
+  <path d="M213 815C238 679 332 579 450 579C568 579 662 679 687 815H213Z" fill="#F8FAFC" opacity="0.96"/>
+  <text x="450" y="883" text-anchor="middle" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="46" font-weight="800">Jean Aime Iraguha</text>
+  <text x="450" y="930" text-anchor="middle" fill="#94A3B8" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="600">Replace with assets/images/profile.jpg</text>
+  <circle cx="450" cy="348" r="170" stroke="#14B8A6" stroke-width="8" opacity="0.55"/>
+</svg>

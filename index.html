@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Jean Aime Iraguha — Data Scientist and AI Engineer portfolio focused on machine learning, mathematical modelling, data engineering, and analytics dashboards." />
+  <meta name="keywords" content="Jean Aime Iraguha, Data Scientist, AI Engineer, Machine Learning, Data Engineering, Mathematical Modelling, Power BI, Python, SQL" />
+  <meta name="author" content="Jean Aime Iraguha" />
+  <meta property="og:title" content="Jean Aime Iraguha | Data Scientist & AI Engineer" />
+  <meta property="og:description" content="Portfolio of data science, AI engineering, data engineering, and mathematical modelling projects." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/images/profile-placeholder.svg" />
+  <meta name="theme-color" content="#07111f" />
+  <title>Jean Aime Iraguha | Data Scientist & AI Engineer</title>
+  <link rel="icon" href="assets/images/profile-placeholder.svg" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="site-header" id="top">
+    <nav class="navbar" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="Home">
+        <span class="brand-mark">JA</span>
+        <span class="brand-text">Jean Aime</span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#credentials">Credentials</a>
+        <a href="#contact">Contact</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">☾</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero section-shell">
+      <div class="hero-bg-orb hero-bg-orb-one"></div>
+      <div class="hero-bg-orb hero-bg-orb-two"></div>
+      <div class="hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Mathematical Data Science • AI Engineering • Reliable Analytics</p>
+          <h1>Building intelligent, reproducible systems from data.</h1>
+          <p class="hero-subtitle">
+            I am <strong>Jean Aime Iraguha</strong>, a mathematically trained Data Scientist and AI Engineer focused on
+            machine learning, numerical modelling, data-quality pipelines, and decision dashboards.
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#projects">Explore Projects</a>
+            <a class="btn secondary" id="heroResumeBtn" href="#contact">Public CV pending</a>
+            <button class="btn ghost" id="copyEmailBtn">Copy Email</button>
+          </div>
+          <div class="trust-row" aria-label="Core credibility highlights">
+            <span>Machine Learning</span>
+            <span>SQL + Python</span>
+            <span>Power BI</span>
+            <span>GANs + VAEs</span>
+          </div>
+        </div>
+
+        <aside class="profile-panel reveal" aria-label="Profile summary card">
+          <div class="profile-photo-wrap">
+            <img id="profilePhoto" src="assets/images/profile-placeholder.svg" alt="Jean Aime Iraguha profile photo" class="profile-photo" />
+            <div class="status-pill"><span class="pulse"></span><span id="availabilityText">Open to Data Scientist & AI Engineer roles</span></div>
+          </div>
+          <div class="profile-details">
+            <p class="profile-label">Currently focused on</p>
+            <h2 id="headlineText">Data Science, AI Engineering & Mathematical Modelling</h2>
+            <p id="locationText" class="muted">Kigali, Rwanda / L'Aquila, Italy</p>
+            <div class="mini-links" id="miniLinks"></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section section-light" id="about">
+      <div class="section-heading reveal">
+        <p class="eyebrow">About</p>
+        <h2>Mathematical depth with practical AI and data delivery.</h2>
+        <p>
+          My portfolio is designed to show recruiters and collaborators how I connect statistics, numerical methods,
+          machine learning, dashboards, and data workflows into real-world solutions.
+        </p>
+      </div>
+      <div class="value-grid" id="valueGrid"></div>
+    </section>
+
+    <section class="section dashboard-section" id="dashboard">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Portfolio Dashboard</p>
+        <h2>At-a-glance proof of growth, skills, and project direction.</h2>
+        <p>Interactive cards, skill bars, and progress indicators summarize the professional story quickly.</p>
+      </div>
+
+      <div class="stats-grid" id="statsGrid"></div>
+
+      <div class="dashboard-grid">
+        <div class="chart-card reveal">
+          <div class="card-title-row">
+            <div>
+              <p class="eyebrow compact">Skill Map</p>
+              <h3>Technical capability profile</h3>
+            </div>
+            <span class="tag">Live from data.js</span>
+          </div>
+          <div class="skill-bars" id="skillBars"></div>
+        </div>
+
+        <div class="chart-card reveal">
+          <div class="card-title-row">
+            <div>
+              <p class="eyebrow compact">Status Board</p>
+              <h3>Latest professional focus</h3>
+            </div>
+            <span class="tag success">Updated</span>
+          </div>
+          <div class="status-board" id="statusBoard"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="projects">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Selected Projects</p>
+        <h2>Recruiter-friendly case studies with clear impact.</h2>
+        <p>Use the filters to explore AI, dashboards, data engineering, and analytics work.</p>
+      </div>
+      <div class="filter-row" id="projectFilters"></div>
+      <div class="projects-grid" id="projectsGrid"></div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Experience</p>
+        <h2>Professional experience across data, analytics, finance, and M&E.</h2>
+      </div>
+      <div class="timeline" id="experienceTimeline"></div>
+    </section>
+
+    <section class="section section-light" id="credentials">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Education & Credentials</p>
+        <h2>Academic training, certifications, and achievements.</h2>
+      </div>
+      <div class="credentials-layout">
+        <div class="credential-card reveal">
+          <h3>Education</h3>
+          <div id="educationList"></div>
+        </div>
+        <div class="credential-card reveal">
+          <h3>Certifications</h3>
+          <div id="certificationList"></div>
+        </div>
+        <div class="credential-card reveal wide">
+          <h3>Achievements</h3>
+          <div id="achievementList" class="achievement-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="contact-card reveal">
+        <p class="eyebrow">Contact</p>
+        <h2>Let’s build data and AI systems that are reliable, useful, and interpretable.</h2>
+        <p>
+          I am open to Data Scientist, AI Engineer, Machine Learning Engineer, Data Analyst, and Analytics Engineering opportunities.
+        </p>
+        <div class="contact-actions" id="contactActions"></div>
+      </div>
+    </section>
+  </main>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+  <dialog class="project-modal" id="projectModal" aria-labelledby="modalTitle">
+    <button class="modal-close" id="modalClose" aria-label="Close project details">×</button>
+    <div id="modalContent"></div>
+  </dialog>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
