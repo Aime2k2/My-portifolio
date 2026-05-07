@@ -13,7 +13,7 @@ function safeLink(url) {
   return url && url !== "#";
 }
 
-function linkButton(label, href, variant = "secondary") {
+function linkButton(label, href) {
   const disabled = !safeLink(href);
   const element = disabled ? document.createElement("span") : document.createElement("a");
   element.className = `small-btn ${disabled ? "disabled" : ""}`;
@@ -28,27 +28,38 @@ function linkButton(label, href, variant = "secondary") {
 
 function initProfile() {
   const profile = data.profile;
-  $("#profilePhoto").src = profile.photo;
-  $("#availabilityText").textContent = profile.availability;
-  $("#headlineText").textContent = profile.headline;
-  $("#locationText").textContent = profile.location;
+
+  const profilePhoto = $("#profilePhoto");
+  if (profilePhoto) profilePhoto.src = profile.photo;
+
+  const availabilityText = $("#availabilityText");
+  if (availabilityText) availabilityText.textContent = profile.availability;
+
+  const headlineText = $("#headlineText");
+  if (headlineText) headlineText.textContent = profile.headline;
+
+  const locationText = $("#locationText");
+  if (locationText) locationText.textContent = profile.location;
 
   const miniLinks = $("#miniLinks");
-  const links = [
-    ["LinkedIn", profile.links.linkedin],
-    ["GitHub", profile.links.github],
-    ["Kaggle", profile.links.kaggle],
-    ["Hugging Face", profile.links.huggingFace]
-  ];
-  links.forEach(([label, href]) => {
-    if (safeLink(href)) {
-      const a = createEl("a", "", label);
-      a.href = href;
-      a.target = "_blank";
-      a.rel = "noreferrer";
-      miniLinks.appendChild(a);
-    }
-  });
+  if (miniLinks) {
+    miniLinks.innerHTML = "";
+    const links = [
+      ["LinkedIn", profile.links.linkedin],
+      ["GitHub", profile.links.github],
+      ["Kaggle", profile.links.kaggle],
+      ["Hugging Face", profile.links.huggingFace]
+    ];
+    links.forEach(([label, href]) => {
+      if (safeLink(href)) {
+        const a = createEl("a", "", label);
+        a.href = href;
+        a.target = "_blank";
+        a.rel = "noreferrer";
+        miniLinks.appendChild(a);
+      }
+    });
+  }
 
   const heroResumeBtn = $("#heroResumeBtn");
   if (heroResumeBtn && safeLink(profile.links.resume)) {
@@ -61,29 +72,42 @@ function initProfile() {
   }
 
   const contactActions = $("#contactActions");
-  const emailLink = createEl("a", "btn primary", `Email ${profile.name.split(" ")[0]}`);
-  emailLink.href = `mailto:${profile.email}`;
-  contactActions.appendChild(emailLink);
+  if (contactActions) {
+    contactActions.innerHTML = "";
+    const emailLink = createEl("a", "btn primary", `Email ${profile.name.split(" ")[0]}`);
+    emailLink.href = `mailto:${profile.email}`;
+    contactActions.appendChild(emailLink);
 
-  if (safeLink(profile.links.linkedin)) {
-    const linkedin = createEl("a", "btn secondary", "LinkedIn");
-    linkedin.href = profile.links.linkedin;
-    linkedin.target = "_blank";
-    linkedin.rel = "noreferrer";
-    contactActions.appendChild(linkedin);
-  }
+    if (safeLink(profile.links.linkedin)) {
+      const linkedin = createEl("a", "btn secondary", "LinkedIn");
+      linkedin.href = profile.links.linkedin;
+      linkedin.target = "_blank";
+      linkedin.rel = "noreferrer";
+      contactActions.appendChild(linkedin);
+    }
 
-  if (safeLink(profile.links.resume)) {
-    const resume = createEl("a", "btn ghost", "Download CV");
-    resume.href = profile.links.resume;
-    resume.target = "_blank";
-    resume.rel = "noreferrer";
-    contactActions.appendChild(resume);
+    if (safeLink(profile.links.github)) {
+      const github = createEl("a", "btn secondary", "GitHub");
+      github.href = profile.links.github;
+      github.target = "_blank";
+      github.rel = "noreferrer";
+      contactActions.appendChild(github);
+    }
+
+    if (safeLink(profile.links.resume)) {
+      const resume = createEl("a", "btn ghost", "Download CV");
+      resume.href = profile.links.resume;
+      resume.target = "_blank";
+      resume.rel = "noreferrer";
+      contactActions.appendChild(resume);
+    }
   }
 }
 
 function renderValues() {
   const grid = $("#valueGrid");
+  if (!grid) return;
+  grid.innerHTML = "";
   data.values.forEach((item) => {
     const card = createEl("article", "value-card reveal");
     card.innerHTML = `
@@ -97,7 +121,11 @@ function renderValues() {
 
 function renderStats() {
   const grid = $("#statsGrid");
-  data.stats.forEach((stat) => {
+  if (!grid) return;
+  grid.innerHTML = "";
+  const isHome = document.body.dataset.page === "home";
+  const stats = isHome ? data.stats.slice(0, 4) : data.stats;
+  stats.forEach((stat) => {
     const card = createEl("article", "stat-card reveal");
     card.innerHTML = `
       <div class="stat-icon">${stat.icon}</div>
@@ -110,6 +138,7 @@ function renderStats() {
 
 function animateCounters() {
   const counters = $$("[data-count]");
+  if (!counters.length) return;
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting || entry.target.dataset.done) return;
@@ -135,6 +164,8 @@ function animateCounters() {
 
 function renderSkills() {
   const container = $("#skillBars");
+  if (!container) return;
+  container.innerHTML = "";
   data.skills.forEach((skill) => {
     const bar = createEl("div", "skill-bar reveal");
     bar.innerHTML = `
@@ -156,6 +187,8 @@ function renderSkills() {
 
 function renderStatus() {
   const container = $("#statusBoard");
+  if (!container) return;
+  container.innerHTML = "";
   data.status.forEach((item) => {
     const status = createEl("div", "status-item reveal");
     status.innerHTML = `<strong>${item.title}</strong><p>${item.text}</p>`;
@@ -165,6 +198,7 @@ function renderStatus() {
 
 function renderFilters(active = "All") {
   const container = $("#projectFilters");
+  if (!container) return;
   container.innerHTML = "";
   data.projectFilters.forEach((filter) => {
     const btn = createEl("button", `filter-btn ${filter === active ? "active" : ""}`, filter);
@@ -179,6 +213,7 @@ function renderFilters(active = "All") {
 
 function renderProjects(active = "All") {
   const grid = $("#projectsGrid");
+  if (!grid) return;
   grid.innerHTML = "";
   const projects = active === "All" ? data.projects : data.projects.filter(p => p.category === active);
 
@@ -211,6 +246,7 @@ function renderProjects(active = "All") {
 function openProjectModal(project) {
   const modal = $("#projectModal");
   const modalContent = $("#modalContent");
+  if (!modal || !modalContent) return;
   modalContent.innerHTML = `
     <div class="modal-inner">
       <span class="project-category">${project.category}</span>
@@ -237,6 +273,8 @@ function openProjectModal(project) {
 
 function renderExperience() {
   const timeline = $("#experienceTimeline");
+  if (!timeline) return;
+  timeline.innerHTML = "";
   data.experience.forEach((item) => {
     const card = createEl("article", "timeline-item reveal");
     card.innerHTML = `
@@ -252,32 +290,41 @@ function renderExperience() {
 
 function renderCredentials() {
   const educationList = $("#educationList");
-  data.education.forEach((item) => {
-    const el = createEl("div", "edu-item reveal");
-    el.innerHTML = `
-      <h4>${item.degree}</h4>
-      <p class="edu-school">${item.school}</p>
-      <p class="edu-period">${item.period}</p>
-      <p>${item.detail}</p>
-    `;
-    educationList.appendChild(el);
-  });
+  if (educationList) {
+    educationList.innerHTML = "";
+    data.education.forEach((item) => {
+      const el = createEl("div", "edu-item reveal");
+      el.innerHTML = `
+        <h4>${item.degree}</h4>
+        <p class="edu-school">${item.school}</p>
+        <p class="edu-period">${item.period}</p>
+        <p>${item.detail}</p>
+      `;
+      educationList.appendChild(el);
+    });
+  }
 
   const certificationList = $("#certificationList");
-  data.certifications.forEach((item) => {
-    const el = createEl("div", "cert-item reveal");
-    el.innerHTML = `
-      <h4>${item.name}</h4>
-      <p class="cert-org">${item.organization}${item.date ? ` • ${item.date}` : ""}</p>
-    `;
-    certificationList.appendChild(el);
-  });
+  if (certificationList) {
+    certificationList.innerHTML = "";
+    data.certifications.forEach((item) => {
+      const el = createEl("div", "cert-item reveal");
+      el.innerHTML = `
+        <h4>${item.name}</h4>
+        <p class="cert-org">${item.organization}${item.date ? ` • ${item.date}` : ""}</p>
+      `;
+      certificationList.appendChild(el);
+    });
+  }
 
   const achievementList = $("#achievementList");
-  data.achievements.forEach((item) => {
-    const el = createEl("div", "achievement-item reveal", `<strong>${item}</strong>`);
-    achievementList.appendChild(el);
-  });
+  if (achievementList) {
+    achievementList.innerHTML = "";
+    data.achievements.forEach((item) => {
+      const el = createEl("div", "achievement-item reveal", `<strong>${item}</strong>`);
+      achievementList.appendChild(el);
+    });
+  }
 }
 
 function initNavigation() {
@@ -287,55 +334,56 @@ function initNavigation() {
   const navLinks = $("#navLinks");
   const navAnchors = $$(".nav-links a");
 
+  const currentPage = document.body.dataset.page;
+  navAnchors.forEach(a => {
+    a.classList.toggle("active", a.dataset.nav === currentPage);
+  });
+
   function onScroll() {
-    header.classList.toggle("scrolled", window.scrollY > 40);
-    backToTop.classList.toggle("visible", window.scrollY > 500);
-
-    const current = [...document.querySelectorAll("main section[id]")]
-      .filter(section => section.offsetTop <= window.scrollY + 120)
-      .pop();
-
-    navAnchors.forEach(a => a.classList.remove("active"));
-    if (current) {
-      const active = $(`.nav-links a[href="#${current.id}"]`);
-      if (active) active.classList.add("active");
-    }
+    if (header) header.classList.toggle("scrolled", window.scrollY > 40);
+    if (backToTop) backToTop.classList.toggle("visible", window.scrollY > 500);
   }
 
   window.addEventListener("scroll", onScroll);
   onScroll();
 
-  backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+  if (backToTop) backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 
-  menuToggle.addEventListener("click", () => {
-    const open = navLinks.classList.toggle("open");
-    menuToggle.setAttribute("aria-expanded", String(open));
-  });
-
-  navAnchors.forEach(link => {
-    link.addEventListener("click", () => {
-      navLinks.classList.remove("open");
-      menuToggle.setAttribute("aria-expanded", "false");
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener("click", () => {
+      const open = navLinks.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(open));
     });
-  });
+
+    navAnchors.forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
 }
 
 function initTheme() {
   const toggle = $("#themeToggle");
   const savedTheme = localStorage.getItem("portfolioTheme") || "light";
   document.documentElement.dataset.theme = savedTheme === "dark" ? "dark" : "light";
-  toggle.textContent = savedTheme === "dark" ? "☀" : "☾";
+  if (toggle) toggle.textContent = savedTheme === "dark" ? "☀" : "☾";
 
-  toggle.addEventListener("click", () => {
-    const isDark = document.documentElement.dataset.theme === "dark";
-    const next = isDark ? "light" : "dark";
-    document.documentElement.dataset.theme = next;
-    localStorage.setItem("portfolioTheme", next);
-    toggle.textContent = next === "dark" ? "☀" : "☾";
-  });
+  if (toggle) {
+    toggle.addEventListener("click", () => {
+      const isDark = document.documentElement.dataset.theme === "dark";
+      const next = isDark ? "light" : "dark";
+      document.documentElement.dataset.theme = next;
+      localStorage.setItem("portfolioTheme", next);
+      toggle.textContent = next === "dark" ? "☀" : "☾";
+    });
+  }
 }
 
 function observeReveal() {
+  const revealEls = $$(".reveal:not(.visible)");
+  if (!revealEls.length) return;
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -345,11 +393,12 @@ function observeReveal() {
     });
   }, { threshold: 0.12 });
 
-  $$(".reveal:not(.visible)").forEach(el => observer.observe(el));
+  revealEls.forEach(el => observer.observe(el));
 }
 
 function initEmailCopy() {
   const btn = $("#copyEmailBtn");
+  if (!btn) return;
   btn.addEventListener("click", async () => {
     try {
       await navigator.clipboard.writeText(data.profile.email);
@@ -374,7 +423,9 @@ function showToast(message) {
 
 function initModal() {
   const modal = $("#projectModal");
-  $("#modalClose").addEventListener("click", () => modal.close());
+  const close = $("#modalClose");
+  if (!modal || !close) return;
+  close.addEventListener("click", () => modal.close());
   modal.addEventListener("close", () => document.body.classList.remove("modal-open"));
   modal.addEventListener("click", (event) => {
     const rect = modal.getBoundingClientRect();

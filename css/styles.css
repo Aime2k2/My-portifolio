@@ -1138,3 +1138,123 @@ h3 {
     padding: 34px 22px;
   }
 }
+
+/* Multi-page refinements */
+.first-page-section {
+  padding-top: 128px;
+  min-height: calc(100vh - 80px);
+}
+
+.page-hero {
+  min-height: 86vh;
+}
+
+.landing-preview {
+  padding-top: 80px;
+}
+
+.home-stats {
+  margin-bottom: 34px;
+}
+
+.page-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.page-card {
+  display: block;
+  min-height: 190px;
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: var(--card);
+  color: var(--text);
+  text-decoration: none;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.page-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(28, 159, 255, 0.4);
+  box-shadow: var(--shadow-dark);
+}
+
+.page-card span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 20px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: white;
+  font-weight: 800;
+}
+
+.page-card h3 {
+  margin-bottom: 10px;
+  font-size: 1.25rem;
+}
+
+.page-card p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.about-narrative {
+  max-width: 960px;
+  margin: 0 auto 36px;
+  padding: 32px;
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.about-narrative h3 {
+  margin-bottom: 12px;
+  font-size: 1.5rem;
+}
+
+.about-narrative p {
+  color: var(--muted);
+  line-height: 1.85;
+}
+
+.contact-note {
+  margin-top: 24px;
+  padding: 16px 18px;
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 18px;
+  color: rgba(255,255,255,0.76);
+  background: rgba(255,255,255,0.06);
+}
+
+.contact-note code {
+  color: white;
+}
+
+body[data-page="home"] .brand {
+  color: #fff;
+}
+
+@media (max-width: 980px) {
+  .page-card-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .first-page-section {
+    padding-top: 112px;
+  }
+  .page-card-grid {
+    grid-template-columns: 1fr;
+  }
+}

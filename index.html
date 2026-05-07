@@ -15,12 +15,12 @@
   <link rel="icon" href="assets/images/profile-placeholder.svg" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
-<body>
+<body data-page="home">
   <div class="noise" aria-hidden="true"></div>
 
   <header class="site-header" id="top">
     <nav class="navbar" aria-label="Main navigation">
-      <a class="brand" href="#top" aria-label="Home">
+      <a class="brand" href="index.html" aria-label="Home">
         <span class="brand-mark">JA</span>
         <span class="brand-text">Jean Aime</span>
       </a>
@@ -28,152 +28,73 @@
         <span></span><span></span><span></span>
       </button>
       <div class="nav-links" id="navLinks">
-        <a href="#about">About</a>
-        <a href="#dashboard">Dashboard</a>
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-        <a href="#credentials">Credentials</a>
-        <a href="#contact">Contact</a>
+        <a data-nav="about" href="about.html">About</a>
+        <a data-nav="dashboard" href="dashboard.html">Dashboard</a>
+        <a data-nav="projects" href="projects.html">Projects</a>
+        <a data-nav="experience" href="experience.html">Experience</a>
+        <a data-nav="credentials" href="credentials.html">Credentials</a>
+        <a data-nav="contact" href="contact.html">Contact</a>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">☾</button>
       </div>
     </nav>
   </header>
 
   <main>
-    <section class="hero section-shell">
-      <div class="hero-bg-orb hero-bg-orb-one"></div>
-      <div class="hero-bg-orb hero-bg-orb-two"></div>
-      <div class="hero-grid">
-        <div class="hero-copy reveal">
-          <p class="eyebrow">Mathematical Data Science • AI Engineering • Reliable Analytics</p>
-          <h1>Building intelligent, reproducible systems from data.</h1>
-          <p class="hero-subtitle">
-            I am <strong>Jean Aime Iraguha</strong>, a mathematically trained Data Scientist and AI Engineer focused on
-            machine learning, numerical modelling, data-quality pipelines, and decision dashboards.
-          </p>
-          <div class="hero-actions">
-            <a class="btn primary" href="#projects">Explore Projects</a>
-            <a class="btn secondary" id="heroResumeBtn" href="#contact">Public CV pending</a>
-            <button class="btn ghost" id="copyEmailBtn">Copy Email</button>
-          </div>
-          <div class="trust-row" aria-label="Core credibility highlights">
-            <span>Machine Learning</span>
-            <span>SQL + Python</span>
-            <span>Power BI</span>
-            <span>GANs + VAEs</span>
-          </div>
-        </div>
-
-        <aside class="profile-panel reveal" aria-label="Profile summary card">
-          <div class="profile-photo-wrap">
-            <img id="profilePhoto" src="assets/images/profile-placeholder.svg" alt="Jean Aime Iraguha profile photo" class="profile-photo" />
-            <div class="status-pill"><span class="pulse"></span><span id="availabilityText">Open to Data Scientist & AI Engineer roles</span></div>
-          </div>
-          <div class="profile-details">
-            <p class="profile-label">Currently focused on</p>
-            <h2 id="headlineText">Data Science, AI Engineering & Mathematical Modelling</h2>
-            <p id="locationText" class="muted">Kigali, Rwanda / L'Aquila, Italy</p>
-            <div class="mini-links" id="miniLinks"></div>
-          </div>
-        </aside>
+<section class="hero section-shell page-hero">
+  <div class="hero-bg-orb hero-bg-orb-one"></div>
+  <div class="hero-bg-orb hero-bg-orb-two"></div>
+  <div class="hero-grid">
+    <div class="hero-copy reveal">
+      <p class="eyebrow">Mathematical Data Science • AI Engineering • Reliable Analytics</p>
+      <h1>Building intelligent, reproducible systems from data.</h1>
+      <p class="hero-subtitle">
+        I am <strong>Jean Aime Iraguha</strong>, a mathematically trained Data Scientist and AI Engineer focused on
+        machine learning, numerical modelling, data-quality pipelines, and decision dashboards.
+      </p>
+      <div class="hero-actions">
+        <a class="btn primary" href="projects.html">Explore Projects</a>
+        <a class="btn secondary" id="heroResumeBtn" href="contact.html">Public CV pending</a>
+        <button class="btn ghost" id="copyEmailBtn">Copy Email</button>
       </div>
-    </section>
-
-    <section class="section section-light" id="about">
-      <div class="section-heading reveal">
-        <p class="eyebrow">About</p>
-        <h2>Mathematical depth with practical AI and data delivery.</h2>
-        <p>
-          My portfolio is designed to show recruiters and collaborators how I connect statistics, numerical methods,
-          machine learning, dashboards, and data workflows into real-world solutions.
-        </p>
+      <div class="trust-row" aria-label="Core credibility highlights">
+        <span>Machine Learning</span>
+        <span>SQL + Python</span>
+        <span>Power BI</span>
+        <span>GANs + VAEs</span>
       </div>
-      <div class="value-grid" id="valueGrid"></div>
-    </section>
+    </div>
 
-    <section class="section dashboard-section" id="dashboard">
-      <div class="section-heading reveal">
-        <p class="eyebrow">Portfolio Dashboard</p>
-        <h2>At-a-glance proof of growth, skills, and project direction.</h2>
-        <p>Interactive cards, skill bars, and progress indicators summarize the professional story quickly.</p>
+    <aside class="profile-panel reveal" aria-label="Profile summary card">
+      <div class="profile-photo-wrap">
+        <img id="profilePhoto" src="assets/images/profile-placeholder.svg" alt="Jean Aime Iraguha profile photo" class="profile-photo" />
+        <div class="status-pill"><span class="pulse"></span><span id="availabilityText">Open to Data Scientist & AI Engineer roles</span></div>
       </div>
-
-      <div class="stats-grid" id="statsGrid"></div>
-
-      <div class="dashboard-grid">
-        <div class="chart-card reveal">
-          <div class="card-title-row">
-            <div>
-              <p class="eyebrow compact">Skill Map</p>
-              <h3>Technical capability profile</h3>
-            </div>
-            <span class="tag">Live from data.js</span>
-          </div>
-          <div class="skill-bars" id="skillBars"></div>
-        </div>
-
-        <div class="chart-card reveal">
-          <div class="card-title-row">
-            <div>
-              <p class="eyebrow compact">Status Board</p>
-              <h3>Latest professional focus</h3>
-            </div>
-            <span class="tag success">Updated</span>
-          </div>
-          <div class="status-board" id="statusBoard"></div>
-        </div>
+      <div class="profile-details">
+        <p class="profile-label">Currently focused on</p>
+        <h2 id="headlineText">Data Science, AI Engineering & Mathematical Modelling</h2>
+        <p id="locationText" class="muted">Kigali, Rwanda / L'Aquila, Italy</p>
+        <div class="mini-links" id="miniLinks"></div>
       </div>
-    </section>
+    </aside>
+  </div>
+</section>
 
-    <section class="section section-light" id="projects">
-      <div class="section-heading reveal">
-        <p class="eyebrow">Selected Projects</p>
-        <h2>Recruiter-friendly case studies with clear impact.</h2>
-        <p>Use the filters to explore AI, dashboards, data engineering, and analytics work.</p>
-      </div>
-      <div class="filter-row" id="projectFilters"></div>
-      <div class="projects-grid" id="projectsGrid"></div>
-    </section>
-
-    <section class="section" id="experience">
-      <div class="section-heading reveal">
-        <p class="eyebrow">Experience</p>
-        <h2>Professional experience across data, analytics, finance, and M&E.</h2>
-      </div>
-      <div class="timeline" id="experienceTimeline"></div>
-    </section>
-
-    <section class="section section-light" id="credentials">
-      <div class="section-heading reveal">
-        <p class="eyebrow">Education & Credentials</p>
-        <h2>Academic training, certifications, and achievements.</h2>
-      </div>
-      <div class="credentials-layout">
-        <div class="credential-card reveal">
-          <h3>Education</h3>
-          <div id="educationList"></div>
-        </div>
-        <div class="credential-card reveal">
-          <h3>Certifications</h3>
-          <div id="certificationList"></div>
-        </div>
-        <div class="credential-card reveal wide">
-          <h3>Achievements</h3>
-          <div id="achievementList" class="achievement-list"></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section contact-section" id="contact">
-      <div class="contact-card reveal">
-        <p class="eyebrow">Contact</p>
-        <h2>Let’s build data and AI systems that are reliable, useful, and interpretable.</h2>
-        <p>
-          I am open to Data Scientist, AI Engineer, Machine Learning Engineer, Data Analyst, and Analytics Engineering opportunities.
-        </p>
-        <div class="contact-actions" id="contactActions"></div>
-      </div>
-    </section>
+<section class="section section-light landing-preview">
+  <div class="section-heading reveal">
+    <p class="eyebrow">Quick Preview</p>
+    <h2>Choose a page from the navigation bar.</h2>
+    <p>This version is now organized as separate pages, so each tab opens its own focused view.</p>
+  </div>
+  <div class="stats-grid home-stats" id="statsGrid"></div>
+  <div class="page-card-grid">
+    <a class="page-card reveal" href="about.html"><span>01</span><h3>About</h3><p>Professional story, strengths, and focus areas.</p></a>
+    <a class="page-card reveal" href="dashboard.html"><span>02</span><h3>Dashboard</h3><p>Stats, skills, and current professional status.</p></a>
+    <a class="page-card reveal" href="projects.html"><span>03</span><h3>Projects</h3><p>Interactive case studies and project details.</p></a>
+    <a class="page-card reveal" href="experience.html"><span>04</span><h3>Experience</h3><p>Career timeline and impact-focused work history.</p></a>
+    <a class="page-card reveal" href="credentials.html"><span>05</span><h3>Credentials</h3><p>Education, certificates, and achievements.</p></a>
+    <a class="page-card reveal" href="contact.html"><span>06</span><h3>Contact</h3><p>Reach out for jobs, collaboration, and interviews.</p></a>
+  </div>
+</section>
   </main>
 
   <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
