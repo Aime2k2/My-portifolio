@@ -10,7 +10,7 @@ profile: {
     name: "Jean Aime Iraguha",
     title: "Data Scientist | Machine Learning & Mathematical Modelling",
     headline: "Statistical Learning, Machine Learning & Mathematical Modelling",
-    tagline: "From rigorous models to useful decisions.",
+    tagline: "I work at the intersection of mathematical models and messy, real-world data.",
     location: "Nice, France",
     email: "jeanaime.iraguha@aims.ac.rw",
     photo: "assets/images/profile.jpg",
@@ -25,12 +25,12 @@ profile: {
   },
 
 values: [
-    { icon: "📐", title: "Statistical Learning", text: "Statistical modelling, time-series analysis, machine learning and careful model evaluation." },
-    { icon: "🧮", title: "Mathematical Modelling", text: "Stochastic methods, numerical analysis, optimization and dynamical systems." },
-    { icon: "👁️", title: "Computer Vision", text: "Object detection and image-based learning, including YOLOv8 experiments on traffic footage." },
-    { icon: "🔧", title: "Data Engineering", text: "Python and SQL workflows, scheduled ETL pipelines, data validation and reproducible processing." },
-    { icon: "📊", title: "Analytics & Dashboards", text: "Power BI reporting, monitoring and evaluation, and clear decision-support visuals." },
-    { icon: "🔬", title: "Research Mindset", text: "Connecting mathematical assumptions with experiments, uncertainty and interpretable results." }
+    { icon: "📐", title: "Statistical Learning", text: "I compare forecasting approaches and check what the results actually support—most recently ARIMA, LSTM and generative models in my AIMS thesis." },
+    { icon: "🧮", title: "Mathematical Modelling", text: "My Erasmus Mundus studies build on probability and numerical methods to understand changing systems and uncertainty." },
+    { icon: "👁️", title: "Computer Vision", text: "I prepared Istanbul traffic-video frames and annotations, then fine-tuned YOLOv8 to identify road users." },
+    { icon: "🔧", title: "Data Engineering", text: "I use Python and SQL to prepare data, check quality and build reproducible analysis workflows; a public Airflow project shows the orchestration side." },
+    { icon: "📊", title: "Analytics & Dashboards", text: "At One Acre Fund, I cleaned agricultural survey records and helped build dashboards to follow seasonal indicators." },
+    { icon: "🔬", title: "Research Mindset", text: "My Bitcoin thesis taught me that a more complex model is not automatically the better forecaster." }
   ],
 
 stats: [
@@ -60,11 +60,11 @@ status: [
     },
     {
       title: "Current research interests",
-      text: "Uncertainty-aware modelling, time series, computer vision, and data-driven models of urban transport networks."
+      text: "Reliable prediction under uncertainty, nonlinear time series and statistical learning; I am also exploring how computer vision could inform transport modelling."
     },
     {
       title: "Professional interests",
-      text: "Data science, machine learning, analytics engineering, and applied research roles that combine mathematical depth with practical delivery."
+      text: "Roles where I can investigate the data, test a model carefully and communicate what its predictions can—and cannot—tell us."
     }
   ],
 
@@ -76,10 +76,10 @@ projects: [
       category: "Research",
       kind: "AIMS Master's thesis",
       image: "assets/images/project-ai.svg",
-      summary: "Explored financial time-series dynamics with classical forecasting and deep generative modelling approaches.",
-      problem: "Volatile financial series challenge linear assumptions and require careful comparison across model families.",
-      solution: "Investigated ARIMA, LSTM, GRU-GAN and LSTM-VAE approaches for modelling nonlinear Bitcoin time-series behaviour.",
-      impact: "Research experience in time-series modelling, generative methods and comparing model assumptions; results are not presented as investment advice.",
+      summary: "For my AIMS thesis, I analysed daily Bitcoin prices from 2012 to 2025 and compared classical forecasts with deep generative models.",
+      problem: "I wanted to know whether models able to generate plausible price sequences would also make more accurate point forecasts.",
+      solution: "Trained GRU-GAN and LSTM-VAE models and benchmarked them against ARIMA and LSTM on Bitcoin time-series data.",
+      impact: "ARIMA gave the best point forecasts in my comparison (2.59% MAPE). Generative models reflected distributional patterns but were sensitive to overfitting and market shifts.",
       tech: ["Python", "ARIMA", "LSTM", "GAN", "VAE", "Time Series"],
       links: { github: "#", demo: "#", report: "#" }
     },
@@ -88,10 +88,10 @@ projects: [
       category: "Computer Vision",
       kind: "Applied computer vision",
       image: "assets/images/project-traffic.svg",
-      summary: "Used YOLOv8 to study vehicle and object detection in Istanbul traffic video.",
-      problem: "Busy road scenes contain moving objects, occlusion and changing visual conditions.",
-      solution: "Applied a YOLOv8 detection workflow to traffic footage and inspected the model's predictions.",
-      impact: "Demonstrates practical computer-vision workflow experience with transport-related visual data.",
+      summary: "Turned Istanbul traffic footage into labelled training data and fine-tuned YOLOv8 for road-user detection.",
+      problem: "Video data is not ready-made training data: frames and bounding-box labels must be consistently extracted and prepared.",
+      solution: "Extracted frames, converted annotations into YOLO format, normalized bounding boxes, split training and validation data, and fine-tuned the model.",
+      impact: "Built a pipeline to detect cars, buses, motorcycles, bicycles and pedestrians; no unsupported accuracy claim is made.",
       tech: ["Python", "YOLOv8", "Computer Vision", "Object Detection"],
       links: { github: "#", demo: "#", report: "#" }
     },
@@ -112,10 +112,10 @@ projects: [
       category: "Analytics",
       kind: "Professional experience",
       image: "assets/images/project-quality.svg",
-      summary: "SQL analysis and monitoring dashboards focused on reliable, consistent reporting data.",
+      summary: "At Cenfri Rwanda, I combined SQL analysis with dashboards to make data-quality issues easier to track.",
       problem: "Reporting teams need to identify missing, inconsistent and invalid records before making decisions.",
-      solution: "Developed SQL-based analysis workflows and dashboards around data-quality dimensions.",
-      impact: "Practical experience translating data-validation requirements into monitoring and technical reporting.",
+      solution: "Wrote SQL queries and Python-based checks for accuracy, completeness, consistency, timeliness, uniqueness and validity, then displayed results in monitoring dashboards.",
+      impact: "Contributed to the reporting and evidence teams use to investigate unreliable records before analysis.",
       tech: ["SQL", "Data Quality", "Dashboards", "Reporting"],
       links: { github: "#", demo: "#", report: "#" }
     },
@@ -124,10 +124,10 @@ projects: [
       category: "Dashboards",
       kind: "Professional experience",
       image: "assets/images/project-dashboard.svg",
-      summary: "Survey-data cleaning and dashboards supporting monitoring and evaluation at One Acre Fund.",
+      summary: "Prepared agricultural survey data and dashboard views for seasonal monitoring at One Acre Fund.",
       problem: "Agricultural survey datasets need consistent preparation and accessible views for programme teams.",
-      solution: "Automated parts of data cleaning and developed reporting views for monitoring workflows.",
-      impact: "Experience making operational data more accessible for analysis and decision support.",
+      solution: "Cleaned, processed and structured survey records; developed automated cleaning steps and dashboard components for indicators and trends.",
+      impact: "Helped teams work from more consistent survey datasets and inspect seasonal patterns without repeating manual preparation.",
       tech: ["Power BI", "Python", "Data Cleaning", "M&E"],
       links: { github: "#", demo: "#", report: "#" }
     },
@@ -147,23 +147,23 @@ projects: [
 
   experience: [
     {
-      role: "Data Science Intern",
+      role: "Data Science Fellow",
       organization: "Cenfri Rwanda",
-      period: "Jun 2025 — Oct 2025",
+      period: "Feb 2025 — Oct 2025",
       points: [
-        "Designed analytical frameworks and developed SQL-based data analysis pipelines.",
+        "Developed analytical frameworks and SQL queries for project analysis, data exploration and reporting.",
         "Built data-quality monitoring dashboards tracking accuracy, completeness, consistency, timeliness, uniqueness, and validity.",
         "Contributed to data visualization, modeling, and technical reporting."
       ]
     },
     {
-      role: "Monitoring & Evaluation Intern",
+      role: "Monitoring & Evaluation",
       organization: "One Acre Fund",
-      period: "Apr 2025 — Sep 2025",
+      period: "Jan 2025 — Jun 2025",
       points: [
-        "Automated data cleaning and processing pipelines to enhance data reliability and efficiency.",
-        "Developed agricultural monitoring dashboards improving survey data accessibility and insights.",
-        "Collaborated with teams to optimize data workflows and support decision-making processes."
+        "Cleaned and structured agricultural survey datasets and automated parts of recurring data-preparation work.",
+        "Built dashboard components for seasonal indicator tracking, trend monitoring and survey reporting.",
+        "Supported monitoring and evaluation reporting by preparing survey data for more consistent analysis."
       ]
     },
     {
@@ -176,11 +176,11 @@ projects: [
       ]
     },
     {
-      role: "Data Analyst Intern",
+      role: "Academic Intern",
       organization: "Rwanda ICT Chamber",
       period: "Apr 2023 — Jul 2023",
       points: [
-        "Conducted data analysis and visualization to support technology companies in decision-making."
+        "Analysed and visualised data for technology-sector reporting at Rwanda ICT Chamber."
       ]
     }
   ],
