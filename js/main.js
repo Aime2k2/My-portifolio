@@ -14,15 +14,13 @@ function safeLink(url) {
 }
 
 function linkButton(label, href) {
-  const disabled = !safeLink(href);
-  const element = disabled ? document.createElement("span") : document.createElement("a");
-  element.className = `small-btn ${disabled ? "disabled" : ""}`;
-  element.textContent = disabled ? `${label} pending` : label;
-  if (!disabled) {
-    element.href = href;
-    element.target = "_blank";
-    element.rel = "noreferrer";
-  }
+  if (!safeLink(href)) return null;
+  const element = document.createElement("a");
+  element.className = "small-btn";
+  element.textContent = label;
+  element.href = href;
+  element.target = "_blank";
+  element.rel = "noopener noreferrer";
   return element;
 }
 
@@ -30,7 +28,13 @@ function initProfile() {
   const profile = data.profile;
 
   const profilePhoto = $("#profilePhoto");
-  if (profilePhoto) profilePhoto.src = profile.photo;
+  if (profilePhoto) {
+    profilePhoto.src = profile.photo;
+    profilePhoto.onerror = () => {
+      profilePhoto.onerror = null;
+      profilePhoto.src = "assets/images/profile-placeholder.svg";
+    };
+  }
 
   const availabilityText = $("#availabilityText");
   if (availabilityText) availabilityText.textContent = profile.availability;
@@ -67,8 +71,6 @@ function initProfile() {
     heroResumeBtn.textContent = "Download CV";
     heroResumeBtn.target = "_blank";
     heroResumeBtn.rel = "noreferrer";
-  } else if (heroResumeBtn) {
-    heroResumeBtn.classList.add("disabled");
   }
 
   const contactActions = $("#contactActions");
@@ -166,23 +168,11 @@ function renderSkills() {
   const container = $("#skillBars");
   if (!container) return;
   container.innerHTML = "";
+  container.classList.add("skill-tags");
   data.skills.forEach((skill) => {
-    const bar = createEl("div", "skill-bar reveal");
-    bar.innerHTML = `
-      <div class="skill-info"><span>${skill.name}</span><span>${skill.level}%</span></div>
-      <div class="skill-track"><div class="skill-fill" data-width="${skill.level}"></div></div>
-    `;
-    container.appendChild(bar);
+    const chip = createEl("span", "skill-chip", skill.name);
+    container.appendChild(chip);
   });
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      entry.target.style.width = `${entry.target.dataset.width}%`;
-      observer.unobserve(entry.target);
-    });
-  }, { threshold: 0.35 });
-  $$(".skill-fill").forEach(fill => observer.observe(fill));
 }
 
 function renderStatus() {
@@ -220,10 +210,10 @@ function renderProjects(active = "All") {
   projects.forEach((project) => {
     const card = createEl("article", "project-card reveal");
     card.innerHTML = `
-      <div class="project-image"><img src="${project.image}" alt="${project.title} project preview"></div>
+      <div class="project-image"><img src="${project.image}" alt="Illustration for ${project.title}" loading="lazy"></div>
       <div class="project-meta-row">
         <span class="project-category">${project.category}</span>
-        <span class="tag">Case Study</span>
+        <span class="tag">${project.kind || "Project"}</span>
       </div>
       <h3>${project.title}</h3>
       <p>${project.summary}</p>
@@ -231,12 +221,12 @@ function renderProjects(active = "All") {
       <div class="project-footer"></div>
     `;
     const footer = $(".project-footer", card);
-    const detailBtn = createEl("button", "small-btn", "View details");
+    const detailBtn = createEl("button", "small-btn", "Explore project");
     detailBtn.type = "button";
     detailBtn.addEventListener("click", () => openProjectModal(project));
     footer.appendChild(detailBtn);
-    footer.appendChild(linkButton("GitHub", project.links.github));
-    footer.appendChild(linkButton("Demo", project.links.demo));
+    const codeLink = linkButton("View code", project.links.github);
+    if (codeLink) footer.appendChild(codeLink);
     grid.appendChild(card);
   });
 
@@ -247,24 +237,28 @@ function openProjectModal(project) {
   const modal = $("#projectModal");
   const modalContent = $("#modalContent");
   if (!modal || !modalContent) return;
+  const projectLinks = [
+    ["View code", project.links.github],
+    ["Live demo", project.links.demo],
+    ["Read report", project.links.report]
+  ].filter(([, href]) => safeLink(href))
+    .map(([label, href]) => `<a class="small-btn" href="${href}" target="_blank" rel="noopener noreferrer">${label}</a>`)
+    .join("");
+
   modalContent.innerHTML = `
     <div class="modal-inner">
       <span class="project-category">${project.category}</span>
       <h3 id="modalTitle">${project.title}</h3>
       <p>${project.summary}</p>
-      <p class="modal-section-title">Problem</p>
+      <p class="modal-section-title">Challenge</p>
       <p>${project.problem}</p>
-      <p class="modal-section-title">Solution</p>
+      <p class="modal-section-title">Approach</p>
       <p>${project.solution}</p>
-      <p class="modal-section-title">Impact</p>
+      <p class="modal-section-title">What it demonstrates</p>
       <p>${project.impact}</p>
-      <p class="modal-section-title">Tools</p>
+      <p class="modal-section-title">Methods & tools</p>
       <div class="tech-list">${project.tech.map(t => `<span>${t}</span>`).join("")}</div>
-      <div class="project-footer">
-        ${safeLink(project.links.github) ? `<a class="small-btn" href="${project.links.github}" target="_blank" rel="noreferrer">GitHub</a>` : `<span class="small-btn disabled">GitHub pending</span>`}
-        ${safeLink(project.links.demo) ? `<a class="small-btn" href="${project.links.demo}" target="_blank" rel="noreferrer">Live demo</a>` : `<span class="small-btn disabled">Demo pending</span>`}
-        ${safeLink(project.links.report) ? `<a class="small-btn" href="${project.links.report}" target="_blank" rel="noreferrer">Report</a>` : `<span class="small-btn disabled">Report pending</span>`}
-      </div>
+      ${projectLinks ? `<div class="project-footer">${projectLinks}</div>` : ""}
     </div>
   `;
   document.body.classList.add("modal-open");

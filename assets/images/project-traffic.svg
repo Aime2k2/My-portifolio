@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+<title id="title">Traffic object detection illustration</title><desc id="desc">Stylised roadway with vehicle detection boxes, illustrative rather than model output.</desc>
+<defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#0b2035"/><stop offset="1" stop-color="#20475c"/></linearGradient><linearGradient id="road" x2="0" y2="1"><stop stop-color="#274959"/><stop offset="1" stop-color="#0b192b"/></linearGradient></defs>
+<rect width="960" height="540" fill="url(#sky)"/>
+<path d="M0 188H960V540H0Z" fill="#173448"/><path d="M310 188H650L960 540H0Z" fill="url(#road)"/>
+<g stroke="#a4c4c5" stroke-width="8" opacity=".35"><path d="M414 188 302 540"/><path d="M547 188 654 540"/></g>
+<g stroke="#d6f0dc" stroke-width="6" opacity=".5" stroke-dasharray="20 30"><path d="M480 195V540"/></g>
+<g fill="#0c2134" stroke="#9bd8d4" stroke-width="3"><rect x="375" y="254" width="130" height="89" rx="18"/><rect x="544" y="333" width="170" height="113" rx="20"/><rect x="202" y="364" width="152" height="102" rx="20"/></g>
+<g fill="#a4e7dc" opacity=".7"><rect x="394" y="267" width="90" height="35" rx="8"/><rect x="564" y="350" width="130" height="45" rx="9"/><rect x="220" y="381" width="116" height="39" rx="9"/></g>
+<g fill="none" stroke="#41edc6" stroke-width="4" stroke-dasharray="12 8"><rect x="362" y="236" width="157" height="119" rx="6"/><rect x="525" y="307" width="205" height="151" rx="6"/><rect x="187" y="339" width="182" height="138" rx="6"/></g>
+<g font-family="Arial,sans-serif" font-size="18" fill="#041e2d"><rect x="362" y="209" width="116" height="27" rx="5" fill="#41edc6"/><text x="375" y="228">VEHICLE</text><rect x="525" y="280" width="116" height="27" rx="5" fill="#41edc6"/><text x="538" y="299">VEHICLE</text><rect x="187" y="312" width="116" height="27" rx="5" fill="#41edc6"/><text x="200" y="331">VEHICLE</text></g>
+<text x="48" y="66" font-family="Arial,sans-serif" font-size="24" letter-spacing="4" font-weight="700" fill="#47e3c9">COMPUTER VISION</text>
+<text x="48" y="115" font-family="Arial,sans-serif" font-size="43" font-weight="700" fill="#f2fbfc">Traffic object detection</text>
+</svg>
